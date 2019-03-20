@@ -20,6 +20,8 @@
         var a=key
       }
 	  
+	  const gamepad = new Gamepad();
+	  
 	  gamepad.on('hold', 'button_1', () => {
 		run_action('forward');
 	  });
