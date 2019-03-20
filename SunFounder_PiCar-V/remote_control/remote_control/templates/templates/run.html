@@ -307,19 +307,20 @@
                     window.clearInterval(checkGP);
                 }
             }, 500);
+			function checkGamepad() {
+			var gp = navigator.getGamepads()[0];
+			var axeLF = gp.axes[1];
+			if(axeLF < -0.5) {
+				run_action('forward')
+			} else if(axeLF > 0.5) {
+			   run_action('backward')
+			} else {
+				run_action('stop')
+			}
         }
  
     });
-	function checkGamepad() {
-    var gp = navigator.getGamepads()[0];
-    var axeLF = gp.axes[0];
-    if(axeLF < -0.5) {
-        run_action('forward')
-    } else if(axeLF > 0.5) {
-       run_action('backward')
-    } else {
-        run_action('stop')
-    }
+
 }
 	
     
