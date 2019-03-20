@@ -10,6 +10,7 @@
     <link rel = "Shortcut Icon" href="{% static 'favicon.ico' %} ">
     <!-- load MUI -->
     <link href="//cdn.muicss.com/mui-0.6.9/css/mui.min.css" rel="stylesheet" type="text/css" />
+	<script src="gamepad.js"></script>
     <script src="//cdn.muicss.com/mui-0.6.9/js/mui.min.js"></script>
     <script type="text/javascript">
       function keydown_event(key){
@@ -18,6 +19,15 @@
       function keyup_event(key){
         var a=key
       }
+	  
+	  gamepad.on('hold', 'button_1', () => {
+		run_action('forward');
+	  });
+	  gamepad.on('release', 'button_1', () => {
+		 run_action('stop');
+	  });
+
+	  
     </script>
     <style type="text/css">
       html {
@@ -252,40 +262,7 @@
         }
       }
 	  
-	  window.addEventListener("gamepadconnected", function(e) {
-	    var gp = navigator.getGamepads()[e.gamepad.index];
-        console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
-          e.gamepad.index, e.gamepad.id,
-          e.gamepad.buttons.length, e.gamepad.axes.length);
-      });
-	 
-	 window.addEventListener("gamepaddisconnected", function(e) {
-        console.log("Gamepad disconnected from index %d: %s",
-           e.gamepad.index, e.gamepad.id);
-      });
-	  
-	var interval;
 
-	if (!('ongamepadconnected' in window)) {
-	  // No gamepad events available, poll instead.
-	  interval = setInterval(pollGamepads, 500);
-	}
-
-	function pollGamepads() {
-	  var gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads : []);
-	  for (var i = 0; i < gamepads.length; i++) {
-		var gp = gamepads[i];
-		if (gp) {
-		  gamepadInfo.innerHTML = "Gamepad connected at index " + gp.index + ": " + gp.id +
-			". It has " + gp.buttons.length + " buttons and " + gp.axes.length + " axes.";
-		  gameLoop();
-		  clearInterval(interval);
-		}
-	  }
-	}
-	
-	  
-	  
     </script>
     <div class="mui-container-fluid-height mui-container-fluid-line-height", id="div_streamer">
       <div id="div_control">
