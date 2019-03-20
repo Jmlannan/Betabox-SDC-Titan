@@ -52,9 +52,7 @@
   </head>
 
   <body class="mui--no-user-select" onkeydown="keydown_event(0)" onkeyup="keyup_event(0)">
-    <div id="gamepadPrompt"></div>
-    <div id="gamepadDisplay"></div>
-    <div id="div_appbar">
+      <div id="div_appbar">
       <div class="mui--z2 mui-appbar mui-container-fluid mui--bg-primary-dark mui--appbar-min-height mui--appbar-line-height">
         <div class="mui-row">
           <div class="mui-col-xs-1 mui-col-sm-1", align="right">
@@ -312,6 +310,18 @@
         }
  
     });
+	function checkGamepad() {
+    var gp = navigator.getGamepads()[0];
+    var axeLF = gp.axes[0];
+    if(axeLF < -0.5) {
+        run_action('forward')
+    } else if(axeLF > 0.5) {
+       run_action('backward')
+    } else {
+        run_action('stop')
+    }
+}
+	
     
 
     </script>
