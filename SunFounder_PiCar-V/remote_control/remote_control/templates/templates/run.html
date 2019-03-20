@@ -10,7 +10,7 @@
     <link rel = "Shortcut Icon" href="{% static 'favicon.ico' %} ">
     <!-- load MUI -->
     <link href="//cdn.muicss.com/mui-0.6.9/css/mui.min.css" rel="stylesheet" type="text/css" />
-	<script src="gamepad.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="//cdn.muicss.com/mui-0.6.9/js/mui.min.js"></script>
     <script type="text/javascript">
       function keydown_event(key){
@@ -254,7 +254,7 @@
       }
 	  
 	 
-	var hasGP = false;
+    var hasGP = false;
     var repGP;
  
     function canGame() {
